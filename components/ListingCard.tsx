@@ -9,14 +9,14 @@ interface ListingCardProps {
 
 export const ListingCard: React.FC<ListingCardProps> = ({ listing, onClick }) => {
   return (
-    <div 
+    <div
       className="group cursor-pointer transition-transform duration-200 hover:-translate-y-1"
       onClick={() => onClick(listing.id)}
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-200">
-        <img 
-          src={listing.images[0]} 
-          alt={listing.title} 
+        <img
+          src={listing.images[0]}
+          alt={listing.title}
           className="h-full w-full object-cover transition-transform group-hover:scale-105"
         />
         <button className="absolute right-3 top-3 rounded-full p-2 text-white hover:bg-black/20">
@@ -25,7 +25,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing, onClick }) =>
           </svg>
         </button>
       </div>
-      
+
       <div className="mt-3">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-gray-900 truncate">{listing.location.city}, {listing.location.country}</h3>
@@ -37,7 +37,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing, onClick }) =>
         <p className="text-gray-500 text-sm line-clamp-1">{listing.title}</p>
         <p className="text-gray-500 text-sm mb-1">Available soon</p>
         <div className="mt-1">
-          <span className="font-semibold text-gray-900">${listing.pricePerNight}</span>
+          <span className="font-semibold text-gray-900">RM{listing.pricePerNight}</span>
           <span className="text-gray-600 text-sm"> night</span>
         </div>
       </div>

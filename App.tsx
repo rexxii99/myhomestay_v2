@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [bookingStatus, setBookingStatus] = useState<'idle' | 'processing' | 'success'>('idle');
-  
+
   // Host state
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiPrice, setAiPrice] = useState<{ suggestedPrice: number; reason: string } | null>(null);
@@ -66,9 +66,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar 
-        onSearch={() => {}} 
-        onOpenAuth={() => setIsAuthModalOpen(true)} 
+      <Navbar
+        onSearch={() => { }}
+        onOpenAuth={() => setIsAuthModalOpen(true)}
         currentUser={currentUser}
         mode={mode}
         setMode={setMode}
@@ -81,9 +81,8 @@ const App: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`flex flex-col items-center gap-1 min-w-max pb-2 border-b-2 transition-all ${
-                activeTab === cat.id ? 'border-gray-800 text-gray-800' : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-200'
-              }`}
+              className={`flex flex-col items-center gap-1 min-w-max pb-2 border-b-2 transition-all ${activeTab === cat.id ? 'border-gray-800 text-gray-800' : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-200'
+                }`}
             >
               <span className="text-2xl">{cat.icon}</span>
               <span className="text-xs font-semibold">{cat.name}</span>
@@ -115,8 +114,8 @@ const App: React.FC = () => {
                     <h3 className="font-bold text-lg">{listing.title}</h3>
                     <p className="text-gray-500">{listing.location.city}, {listing.location.country}</p>
                     <div className="mt-4 flex items-center justify-between">
-                      <span className="font-semibold">${listing.pricePerNight}/night</span>
-                      <button 
+                      <span className="font-semibold">RM{listing.pricePerNight}/night</span>
+                      <button
                         onClick={() => handleListingClick(listing.id)}
                         className="text-rose-500 font-semibold hover:underline"
                       >
@@ -134,7 +133,7 @@ const App: React.FC = () => {
       {/* Listing Detail Overlay/Modal */}
       {selectedListing && (
         <div className="fixed inset-0 z-[60] bg-white overflow-y-auto pt-16">
-          <button 
+          <button
             onClick={() => { setSelectedListing(null); setAiPrice(null); }}
             className="fixed top-4 left-4 p-2 bg-white rounded-full shadow-lg border border-gray-200 z-[70] hover:bg-gray-100"
           >
@@ -236,7 +235,7 @@ const App: React.FC = () => {
                 <div className="sticky top-24 border border-gray-200 rounded-2xl shadow-xl p-6 bg-white">
                   <div className="flex items-center justify-between mb-6">
                     <div>
-                      <span className="text-2xl font-bold">${selectedListing.pricePerNight}</span>
+                      <span className="text-2xl font-bold">RM{selectedListing.pricePerNight}</span>
                       <span className="text-gray-600"> night</span>
                     </div>
                     <div className="text-sm font-semibold">
@@ -252,11 +251,11 @@ const App: React.FC = () => {
                     </div>
                     {aiPrice ? (
                       <div className="text-xs text-purple-700">
-                        <p className="font-bold mb-1">Recommended: ${aiPrice.suggestedPrice}/night</p>
+                        <p className="font-bold mb-1">Recommended: RM{aiPrice.suggestedPrice}/night</p>
                         <p>{aiPrice.reason}</p>
                       </div>
                     ) : (
-                      <button 
+                      <button
                         onClick={runSmartPrice}
                         disabled={isAiLoading}
                         className="w-full text-xs font-bold text-purple-600 hover:text-purple-800 disabled:opacity-50"
@@ -287,7 +286,7 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  <button 
+                  <button
                     onClick={handleBooking}
                     className="w-full bg-rose-500 text-white font-bold py-3 rounded-lg hover:bg-rose-600 transition-colors"
                   >
@@ -298,20 +297,20 @@ const App: React.FC = () => {
 
                   <div className="mt-6 space-y-3">
                     <div className="flex justify-between text-gray-600">
-                      <span className="underline">${selectedListing.pricePerNight} x 5 nights</span>
-                      <span>${selectedListing.pricePerNight * 5}</span>
+                      <span className="underline">RM{selectedListing.pricePerNight} x 5 nights</span>
+                      <span>RM{selectedListing.pricePerNight * 5}</span>
                     </div>
                     <div className="flex justify-between text-gray-600">
                       <span className="underline">Cleaning fee</span>
-                      <span>$85</span>
+                      <span>RM85</span>
                     </div>
                     <div className="flex justify-between text-gray-600">
                       <span className="underline">Service fee</span>
-                      <span>$120</span>
+                      <span>RM120</span>
                     </div>
                     <div className="pt-4 border-t border-gray-200 flex justify-between font-bold text-lg">
                       <span>Total</span>
-                      <span>${selectedListing.pricePerNight * 5 + 85 + 120}</span>
+                      <span>RM{selectedListing.pricePerNight * 5 + 85 + 120}</span>
                     </div>
                   </div>
                 </div>
@@ -325,7 +324,7 @@ const App: React.FC = () => {
       {isAuthModalOpen && (
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
           <div className="bg-white w-full max-w-md rounded-2xl overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            <button 
+            <button
               onClick={() => setIsAuthModalOpen(false)}
               className="absolute top-4 left-4 p-2 hover:bg-gray-100 rounded-full"
             >
@@ -339,7 +338,7 @@ const App: React.FC = () => {
               <div className="space-y-3">
                 <input type="text" placeholder="Phone number" className="w-full p-4 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-black" />
                 <p className="text-xs text-gray-500">We'll call or text you to confirm your number. Standard message and data rates apply.</p>
-                <button 
+                <button
                   onClick={() => setIsAuthModalOpen(false)}
                   className="w-full bg-rose-500 text-white font-bold py-3 rounded-lg"
                 >
@@ -417,8 +416,8 @@ const App: React.FC = () => {
             <span className="hover:underline cursor-pointer">Sitemap</span>
           </div>
           <div className="flex items-center gap-4 font-semibold">
-            <span>🌐 English (US)</span>
-            <span>$ USD</span>
+            <span>🌐 English (MY)</span>
+            <span>RM MYR</span>
           </div>
         </div>
       </footer>
