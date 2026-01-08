@@ -1,0 +1,7 @@
+{
+  "name": "MyHomestay",
+  "description": "A comprehensive Airbnb-inspired travel and hospitality platform with listing management, search, and AI-powered smart features.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
